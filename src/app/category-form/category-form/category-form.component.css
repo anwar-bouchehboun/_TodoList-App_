@@ -1,0 +1,33 @@
+:host {
+  display: block;
+  max-width: 600px;
+  margin: 20px auto;
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.form-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+button[mat-raised-button] {
+  min-width: 120px;
+}
+
+mat-card {
+  padding: 20px;
+}
+
+mat-card-header {
+  margin-bottom: 20px;
+}
+
+mat-form-field {
+  margin-bottom: 16px;
+}

@@ -1,0 +1,27 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{ Cat }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-list>
+      <mat-list-item *ngFor="let category of categories$ | async">
+        <div class="mat-mdc-list-item-content">
+          <h3>{{ category.name }}</h3>
+          <div class="actions">
+            <button mat-icon-button class="edit" [routerLink]="['/categories/edit', category.id]">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button class="delete" (click)="deleteCategory(category.id!)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </div>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button color="primary" routerLink="/categories/new">
+      Add Category
+    </button>
+  </mat-card-actions>
+</mat-card>
