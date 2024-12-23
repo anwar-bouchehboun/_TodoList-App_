@@ -89,6 +89,6 @@ export class CategoryFormComponent implements OnInit {
   }
 
   onCancel(): void {
-    this.router.navigate(['/categories/liste']);
+    this.router.navigate(['/categories']);
   }
 }

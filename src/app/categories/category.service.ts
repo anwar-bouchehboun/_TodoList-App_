@@ -16,17 +16,14 @@ export class CategoryService {
 
   private loadCategories() {
     const storedCategories = localStorage.getItem('categories');
-    console.log('Stored categories from localStorage:', storedCategories);
 
     if (storedCategories) {
       this.categories = JSON.parse(storedCategories);
-      console.log('Parsed categories:', this.categories);
     } else {
       this.categories = [
         { id: 1, name: 'Catégorie Test 1' },
         { id: 2, name: 'Catégorie Test 2' },
       ];
-      console.log('Adding default categories:', this.categories);
       this.saveCategories();
     }
 
@@ -36,11 +33,10 @@ export class CategoryService {
   private saveCategories() {
     localStorage.setItem('categories', JSON.stringify(this.categories));
     this.categoriesSubject.next(this.categories);
-    
+
   }
 
   getCategories(): Observable<Category[]> {
-    console.log('getCategories called, current categories:', this.categories);
     return this.categoriesSubject.asObservable();
   }
 
@@ -56,7 +52,7 @@ export class CategoryService {
       this.categories.push(category);
       this.saveCategories();
     } else {
-      throw new Error('Category name must be unique');
+      alert('Category name must be unique');
     }
   }
 

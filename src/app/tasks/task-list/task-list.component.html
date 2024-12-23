@@ -1,0 +1,116 @@
+<button mat-icon-button color="primary" [routerLink]="['/tasks/newTask']">
+  <mat-icon>add</mat-icon>
+</button>
+<div class="task-board">
+  <div class="task-column">
+    <div class="column-header">
+      <h2>À FAIRE</h2>
+    </div>
+    <div class="task-list">
+      <mat-card
+        *ngFor="let task of tasks$ | async | taskFilter : 'not_started'"
+        class="task-card"
+      >
+        <mat-card-content>
+          <div class="task-header">
+            <h3>{{ task.title }}</h3>
+            <div class="task-actions">
+              <button
+                mat-icon-button
+                color="primary"
+                [routerLink]="['/tasks/edit', task.id]"
+              >
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button
+                mat-icon-button
+                color="warn"
+                (click)="deleteTask(task.id)"
+              >
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
+          </div>
+          <p>Date: {{ task.dueDate | date : "dd/MM/yyyy" }}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+
+  <div class="task-column">
+    <div class="column-header">
+      <h2>EN COURS</h2>
+    </div>
+    <div class="task-list">
+      <mat-card
+        *ngFor="let task of tasks$ | async | taskFilter : 'in_progress'"
+        class="task-card"
+      >
+        <mat-card-content>
+          <div class="task-header">
+            <h3>{{ task.title }}</h3>
+            <div class="task-actions">
+              <button
+                mat-icon-button
+                color="primary"
+                [routerLink]="['/tasks/edit', task.id]"
+              >
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button
+                mat-icon-button
+                color="warn"
+                (click)="deleteTask(task.id)"
+              >
+                <mat-icon>delete</mat-icon>
+              </button>
+              <button
+                mat-icon-button
+                color="accent"
+                (click)="updateTaskStatus(task, 'completed')"
+              >
+                <mat-icon>check</mat-icon>
+              </button>
+            </div>
+          </div>
+          <p>Date: {{ task.dueDate | date : "dd/MM/yyyy" }}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+
+  <div class="task-column">
+    <div class="column-header">
+      <h2>FINI</h2>
+    </div>
+    <div class="task-list">
+      <mat-card
+        *ngFor="let task of tasks$ | async | taskFilter : 'completed'"
+        class="task-card"
+      >
+        <mat-card-content>
+          <div class="task-header">
+            <h3>{{ task.title }}</h3>
+            <div class="task-actions">
+              <button
+                mat-icon-button
+                color="primary"
+                [routerLink]="['/tasks/edit', task.id]"
+              >
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button
+                mat-icon-button
+                color="warn"
+                (click)="deleteTask(task.id)"
+              >
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
+          </div>
+          <p>Date: {{ task.dueDate | date : "dd/MM/yyyy" }}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

@@ -34,10 +34,10 @@ export class CategoryListComponent implements OnInit {
   constructor(private categoryService: CategoryService) {}
 
   ngOnInit() {
-    this.categories$.subscribe(
+   /* this.categories$.subscribe(
       categories => console.log('Categories received:', categories),
       error => console.error('Error:', error)
-    );
+    );*/
   }
 
   deleteCategory(id: number) {

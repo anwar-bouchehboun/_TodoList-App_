@@ -1,0 +1,102 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{ isEditMode ? "Edit Task" : "Add Task" }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+      <mat-form-field>
+        <input matInput placeholder="Title" formControlName="title" />
+        <mat-error
+          *ngIf="taskForm.get('title')?.errors?.['required'] && taskForm.get('title')?.touched"
+        >
+          Le titre est obligatoire
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <textarea
+          matInput
+          placeholder="Description"
+          formControlName="description"
+        ></textarea>
+        <mat-error
+          *ngIf="taskForm.get('description')?.errors?.['required'] && taskForm.get('description')?.touched"
+        >
+          La description est obligatoire
+        </mat-error>
+        <mat-error *ngIf="taskForm.get('description')?.errors?.['maxlength']">
+          La description est trop longue
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input
+          matInput
+          [matDatepicker]="picker"
+          placeholder="Due Date"
+          formControlName="dueDate"
+          [min]="minDate"
+        />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error
+          *ngIf="taskForm.get('dueDate')?.hasError('matDatepickerMin')"
+        >
+          La date ne peut pas être dans le passé
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-select placeholder="Priority" formControlName="priority">
+          <mat-option value="high">High</mat-option>
+          <mat-option value="medium">Medium</mat-option>
+          <mat-option value="low">Low</mat-option>
+        </mat-select>
+        <mat-error
+          *ngIf="taskForm.get('priority')?.errors?.['required'] && taskForm.get('priority')?.touched"
+        >
+          La priorité est obligatoire
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-select placeholder="Status" formControlName="status">
+          <mat-option value="not_started">Not Started</mat-option>
+          <mat-option value="in_progress">In Progress</mat-option>
+          <mat-option value="completed">Completed</mat-option>
+        </mat-select>
+        <mat-error
+          *ngIf="taskForm.get('status')?.errors?.['required'] && taskForm.get('status')?.touched"
+        >
+          Le statut est obligatoire
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-select placeholder="Category" formControlName="categoryId">
+          <mat-option
+            *ngFor="let category of categories$ | async"
+            [value]="category.id"
+          >
+            {{ category.name }}
+          </mat-option>
+        </mat-select>
+        <mat-error
+          *ngIf="taskForm.get('categoryId')?.errors?.['required'] && taskForm.get('categoryId')?.touched"
+        >
+          La catégorie est obligatoire
+        </mat-error>
+      </mat-form-field>
+
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        [disabled]="!taskForm.valid"
+        class="submit-button"
+      >
+        {{ isEditMode ? "Modifier" : "Ajouter" }} la tâche
+      </button>
+    </form>
+  </mat-card-content>
+</mat-card>
