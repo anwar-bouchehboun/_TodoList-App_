@@ -1,27 +1,82 @@
-# TodoListeFront
+# 📋 ToDoList Application
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.11.
+## 🌟 Project Overview
+This **ToDoList application** is designed to provide users with a customizable and efficient task management experience. The app allows users to create, modify, and delete tasks and categories, all while offering a real-time search functionality and an interactive statistics dashboard.
 
-## Development server
+The application is built using **Angular 17** with a modular and reactive architecture, adhering to frontend development best practices.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+---
 
-## Code scaffolding
+## ✨ Features
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### ✅ Task Management
+- **Create, modify, and delete tasks** with detailed information:
+  - Title (with max length validation)
+  - Optional description
+  - European date & time for deadlines (no past dates allowed)
+  - Priority levels (High, Medium, Low)
+  - Completion status (Not Started, In Progress, Completed)
 
-## Build
+- **Category Management**
+  - Create, modify, and delete categories (e.g., Work, Personal, Shopping)
+  - Prevent duplicate categories
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- **Real-Time Search**
+  - Find tasks by title or description instantly after validation.
 
-## Running unit tests
+- **Task-Category Relation**
+  - Each task belongs to one and only one category.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+---
 
-## Running end-to-end tests
+### 📊 Statistics Dashboard
+- Interactive visualizations showing:
+  - Percentage of completed tasks.
+  - Percentage of pending tasks.
+  - Number of overdue tasks.
+- Powered by **NgxCharts**, **Chart.js**, or **Angular Material Dashboard**.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+---
 
-## Further help
+### 🚀 Additional Features
+- **Responsive Design**: Adapts to both desktop and mobile devices.
+- **Real-Time Notifications**:
+  - Alerts for tasks nearing deadlines.
+  - Notifications can be marked as "read."
+  - View notification history.
+- **Data Persistence**:
+  - Data is stored in `localStorage` using JSON, ensuring it remains intact after browser closure.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+---
+
+## 🛠️ Technologies Used
+
+| **Technology**        | **Purpose**                                   |
+|------------------------|-----------------------------------------------|
+| **Angular 17**         | Framework for building a modular SPA.        |
+| **SCSS**               | Styling with enhanced capabilities.          |
+| **Bootstrap/Tailwind** | Responsive and visually appealing UI.        |
+| **RxJS Observables**   | Real-time data handling and updates.          |
+| **Angular Services**   | Communication between components.            |
+| **Pipes**              | Format dates and apply filters.              |
+| **Routing**            | Navigation between views.                    |
+| **Databinding**        | Sync data seamlessly between UI and logic.   |
+
+---
+
+## 📋 Installation Instructions
+
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/anwar-bouchehboun/_TodoList-App_.git
+   cd todolist-app
+   ```
+
+2. **Install Dependencies**:
+   ```bash
+   npm install
+   ```
+3. **Run the Application**:
+   ```bash
+   ng serve
+   ```
