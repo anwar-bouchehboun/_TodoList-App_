@@ -63,3 +63,16 @@ mat-card-content p {
   color: #666;
   font-size: 0.9rem;
 }
+
+.task-card-in-progress {
+  border-left: 4px solid #d78b50;
+}
+
+.task-card-completed {
+  border-left: 4px solid #019701;
+}
+
+.task-card-not-started {
+  border-left: 4px solid #ff0000;
+}
+

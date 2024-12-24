@@ -11,7 +11,7 @@
         *ngFor="let task of tasks$ | async | taskFilter : 'not_started'"
         class="task-card"
       >
-        <mat-card-content>
+        <mat-card-content class="task-card-not-started">
           <div class="task-header">
             <h3>{{ task.title }}</h3>
             <div class="task-actions">
@@ -46,7 +46,7 @@
         *ngFor="let task of tasks$ | async | taskFilter : 'in_progress'"
         class="task-card"
       >
-        <mat-card-content>
+        <mat-card-content class="task-card-in-progress">
           <div class="task-header">
             <h3>{{ task.title }}</h3>
             <div class="task-actions">
@@ -88,7 +88,7 @@
         *ngFor="let task of tasks$ | async | taskFilter : 'completed'"
         class="task-card"
       >
-        <mat-card-content>
+        <mat-card-content class="task-card-completed">
           <div class="task-header">
             <h3>{{ task.title }}</h3>
             <div class="task-actions">

@@ -6,8 +6,8 @@ import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
-import { CategoryService } from '../categories/category.service';
-import { Category } from '../categories/category.model';
+import { CategoryService } from '../category.service';
+import { Category } from '../category.model';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -29,12 +29,10 @@ export class CategoryListComponent implements OnInit {
 
   categories$: Observable<Category[]> = this.categoryService.getCategories();
 
-
-
   constructor(private categoryService: CategoryService) {}
 
   ngOnInit() {
-   /* this.categories$.subscribe(
+    /* this.categories$.subscribe(
       categories => console.log('Categories received:', categories),
       error => console.error('Error:', error)
     );*/
@@ -42,7 +40,7 @@ export class CategoryListComponent implements OnInit {
 
   deleteCategory(id: number) {
     if (confirm('Êtes-vous sûr de vouloir supprimer cette catégorie ?')) {
-    this.categoryService.deleteCategory(id);
+      this.categoryService.deleteCategory(id);
     }
   }
 }

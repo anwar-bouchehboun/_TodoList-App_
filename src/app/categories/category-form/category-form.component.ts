@@ -11,7 +11,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CategoryService } from '../../categories/category.service';
+import { CategoryService } from '../category.service';
 
 @Component({
   selector: 'app-category-form',
