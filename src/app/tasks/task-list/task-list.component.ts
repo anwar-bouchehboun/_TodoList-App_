@@ -9,6 +9,7 @@ import { TaskService } from '../task.service';
 import { Task } from '../task.model';
 import { TaskFilterPipe } from '../task-filter.pipe';
 import { BehaviorSubject } from 'rxjs';
+import { TaskSearchComponent } from '../task-search/task-search.component';
 
 @Component({
   selector: 'app-task-list',
@@ -21,6 +22,7 @@ import { BehaviorSubject } from 'rxjs';
     MatButtonModule,
     MatIconModule,
     TaskFilterPipe,
+    TaskSearchComponent,
   ],
   templateUrl: './task-list.component.html',
   styleUrls: ['./task-list.component.css'],

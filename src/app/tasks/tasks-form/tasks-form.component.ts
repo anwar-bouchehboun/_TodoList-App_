@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TaskService } from '../task.service';
 import { CategoryService } from '../../categories/category.service';
-import { Task } from '../task.model';
 import { Category } from '../../categories/category.model';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';

@@ -1,0 +1,63 @@
+mat-form-field {
+  width: 100%;
+}
+
+.task-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px; /* Espace entre les cartes */
+  justify-content: center; /* Centrer les cartes */
+}
+
+.task-card {
+  width: 300px; /* Largeur des cartes */
+  border-radius: 8px; /* Coins arrondis */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Ombre légère */
+  transition: transform 0.2s; /* Transition pour l'effet de survol */
+  overflow: hidden; /* Pour éviter le débordement */
+}
+
+.task-card:hover {
+  transform: translateY(-5px); /* Effet de survol */
+}
+
+mat-card-header {
+  background-color: #f5f5f5; /* Couleur de fond pour l'en-tête */
+  padding: 16px; /* Espacement interne */
+}
+
+mat-card-title {
+  font-size: 1.2em; /* Taille de la police pour le titre */
+  font-weight: bold; /* Gras pour le titre */
+}
+
+mat-card-subtitle {
+  font-size: 0.9em; /* Taille de la police pour le sous-titre */
+  color: #666; /* Couleur grise pour le sous-titre */
+}
+
+mat-card-content {
+  padding: 16px; /* Espacement interne */
+  font-size: 0.95em; /* Taille de la police pour le contenu */
+  color: #333; /* Couleur du texte */
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 12px;
+  color: white; /* Couleur du texte */
+  font-weight: bold; /* Gras pour le texte */
+}
+
+.status-completed {
+  background-color: #4caf50; /* Vert pour "Completed" */
+}
+
+.status-in-progress {
+  background-color: #ff9800; /* Orange pour "In Progress" */
+}
+
+.status-pending {
+  background-color: #f44336; /* Rouge pour "Pending" */
+}

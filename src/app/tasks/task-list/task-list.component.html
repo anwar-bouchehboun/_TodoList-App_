@@ -1,3 +1,4 @@
+
 <button mat-icon-button color="primary" [routerLink]="['/tasks/newTask']">
   <mat-icon>add</mat-icon>
 </button>
@@ -13,8 +14,12 @@
       >
         <mat-card-content class="task-card-not-started">
           <div class="task-header">
-            <h3>{{ task.title }}</h3>
-            <div class="task-actions">
+            <div class="task-title">
+              <h3>{{ task.title }} </h3>
+              <h3 class="task-description"> {{ task.description }}</h3>
+
+            </div>
+               <div class="task-actions">
               <button
                 mat-icon-button
                 color="primary"
@@ -48,8 +53,12 @@
       >
         <mat-card-content class="task-card-in-progress">
           <div class="task-header">
-            <h3>{{ task.title }}</h3>
-            <div class="task-actions">
+            <div class="task-title">
+              <h3>{{ task.title }} </h3>
+              <h3 class="task-description"> {{ task.description }}</h3>
+
+            </div>
+             <div class="task-actions">
               <button
                 mat-icon-button
                 color="primary"
@@ -63,13 +72,6 @@
                 (click)="deleteTask(task.id)"
               >
                 <mat-icon>delete</mat-icon>
-              </button>
-              <button
-                mat-icon-button
-                color="accent"
-                (click)="updateTaskStatus(task, 'completed')"
-              >
-                <mat-icon>check</mat-icon>
               </button>
             </div>
           </div>
@@ -90,15 +92,21 @@
       >
         <mat-card-content class="task-card-completed">
           <div class="task-header">
-            <h3>{{ task.title }}</h3>
+            <div class="task-title">
+              <h3>{{ task.title }} </h3>
+              <h3 class="task-description"> {{ task.description }}</h3>
+
+            </div>
             <div class="task-actions">
-              <button
+             <button
                 mat-icon-button
+                disabled="true"
                 color="primary"
                 [routerLink]="['/tasks/edit', task.id]"
               >
                 <mat-icon>edit</mat-icon>
               </button>
+
               <button
                 mat-icon-button
                 color="warn"

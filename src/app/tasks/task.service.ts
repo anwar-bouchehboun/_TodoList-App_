@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of, BehaviorSubject, throwError } from 'rxjs';
+import { Observable, of, BehaviorSubject, throwError, map } from 'rxjs';
 import { Task } from './task.model';
 
 @Injectable({
@@ -80,6 +80,17 @@ export class TaskService {
       return of(void 0);
     }
     return throwError(() => new Error('Tâche non trouvée'));
+  }
+
+  searchTasks(searchTerm: string): Observable<Task[]> {
+    return this.getAllTasks().pipe(
+      map((allTasks: Task[]) => {
+        console.log('Toutes les tâches:', allTasks);
+        return allTasks.filter((task: Task) =>
+          task.description?.includes(searchTerm) || task.title.includes(searchTerm)
+        );
+      })
+    );
   }
 
   /*

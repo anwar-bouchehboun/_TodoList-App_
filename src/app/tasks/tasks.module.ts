@@ -19,7 +19,7 @@ const routes: Routes = [
   { path: 'list', component: TaskListComponent },
   { path: 'newTask', component: TasksFormComponent },
   { path: 'edit/:id', component: TasksFormComponent },
-  { path: 'search', component: TaskSearchComponent },
+  { path: '', component: TaskSearchComponent },
 ];
 
 @NgModule({
