@@ -61,3 +61,8 @@ mat-card-content {
 .status-pending {
   background-color: #f44336; /* Rouge pour "Pending" */
 }
+mat-form-field {
+  width: 50%;
+  margin: auto;
+  padding-left: 25%;
+}

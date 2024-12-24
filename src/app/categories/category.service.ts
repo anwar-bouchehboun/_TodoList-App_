@@ -67,7 +67,7 @@ export class CategoryService {
       this.categories[index] = updatedCategory;
       this.saveCategories();
     } else {
-      throw new Error('Category name must be unique');
+      alert('Category name must be unique');
     }
   }
 
