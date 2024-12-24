@@ -35,14 +35,11 @@
           [matDatepicker]="picker"
           placeholder="Due Date"
           formControlName="dueDate"
-          [min]="minDate"
         />
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
-        <mat-error
-          *ngIf="taskForm.get('dueDate')?.hasError('matDatepickerMin')"
-        >
-          La date ne peut pas être dans le passé
+        <mat-error *ngIf="taskForm.get('dueDate')?.errors?.['dateInvalide']">
+          La date doit être aujourd'hui ou dans le futur
         </mat-error>
       </mat-form-field>
 

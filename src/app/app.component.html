@@ -1,12 +1,59 @@
-<mat-toolbar color="primary">
-  <span>{{ title }}</span>
-  <span class="spacer"></span>
-  <button mat-button routerLink="/tasks">Tasks</button>
-  <button mat-button routerLink="/tasks/list">PLanification</button>
-  <button mat-button routerLink="/categories">Catégories</button>
+<mat-sidenav-container class="sidenav-container">
+  <!-- Sidenav pour mobile -->
+  <mat-sidenav #sidenav mode="over" class="sidenav" fixedInViewport>
+    <mat-nav-list>
+      <div class="sidenav-header">
+        <span class="app-title">{{ title }}</span>
+        <button mat-icon-button (click)="sidenav.close()">
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+      <mat-divider></mat-divider>
+      <a mat-list-item routerLink="/tasks" (click)="sidenav.close()">
+        <mat-icon>list</mat-icon>
+        <span>Tâches</span>
+      </a>
+      <a mat-list-item routerLink="/tasks/list" (click)="sidenav.close()">
+        <mat-icon>calendar_today</mat-icon>
+        <span>Planification</span>
+      </a>
+      <a mat-list-item routerLink="/categories" (click)="sidenav.close()">
+        <mat-icon>category</mat-icon>
+        <span>Catégories</span>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
 
-</mat-toolbar>
+  <!-- Contenu principal -->
+  <mat-sidenav-content>
+    <mat-toolbar color="primary" class="toolbar">
+      <button mat-icon-button (click)="sidenav.toggle()" class="menu-button">
+        <mat-icon>menu</mat-icon>
+      </button>
 
-<div class="content">
-  <router-outlet></router-outlet>
-</div>
+      <span class="app-title">{{ title }}</span>
+
+      <!-- Menu pour desktop -->
+      <div class="desktop-menu">
+        <button mat-button routerLink="/tasks">
+          <mat-icon>list</mat-icon>
+          <span>Tâches</span>
+        </button>
+        <button mat-button routerLink="/tasks/list">
+          <mat-icon>calendar_today</mat-icon>
+          <span>Planification</span>
+        </button>
+        <button mat-button routerLink="/categories">
+          <mat-icon>category</mat-icon>
+          <span>Catégories</span>
+        </button>
+      </div>
+
+    </mat-toolbar>
+
+    <!-- Contenu de la page -->
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

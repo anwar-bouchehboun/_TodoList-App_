@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  AbstractControl,
+  ValidationErrors,
+} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TaskService } from '../task.service';
 import { CategoryService } from '../../categories/category.service';
@@ -58,15 +64,16 @@ export class TasksFormComponent implements OnInit {
     if (this.taskForm.valid) {
       const formValue = { ...this.taskForm.value };
       if (formValue.dueDate) {
-        formValue.dueDate = formValue.dueDate
-          .toISOString()
-          .split('T')[0]
-          .replace(/-/g, '-');
+        const date = new Date(formValue.dueDate);
+        date.setHours(12, 0, 0, 0);
+        formValue.dueDate = date.toISOString().slice(0, 10);
       }
+
       try {
         if (this.isEditMode && this.taskId) {
           this.taskService.updateTask(this.taskId, formValue);
         } else {
+          console.log(formValue);
           this.taskService.createTask(formValue);
         }
         this.router.navigate(['/tasks/list']);
@@ -84,18 +91,20 @@ export class TasksFormComponent implements OnInit {
       this.taskService.getTaskById(+id).subscribe({
         next: (task) => {
           if (task) {
+            const date = new Date(task.dueDate);
+            date.setHours(12, 0, 0, 0);
+
             this.taskForm.patchValue({
               title: task.title,
               description: task.description || '',
-              dueDate: new Date(task.dueDate),
+              dueDate: date,
               categoryId: task.categoryId,
               priority: task.priority,
               status: task.status,
             });
           }
         },
-        error: (error) =>
-          console.log('Erreur lors du chargement de la tâche:'),
+        error: (error) => console.log('Erreur lors du chargement de la tâche:'),
       });
     }
   }
@@ -103,10 +112,25 @@ export class TasksFormComponent implements OnInit {
     this.taskForm = this.fb.group({
       title: ['', Validators.required],
       description: ['', [Validators.required, Validators.maxLength(255)]],
-      dueDate: ['', [Validators.required]],
+      dueDate: ['', [Validators.required, this.futureDateValidator()]],
       categoryId: [null, Validators.required],
       priority: ['', Validators.required],
       status: ['', Validators.required],
     });
+  }
+
+  private futureDateValidator() {
+    return (control: AbstractControl): ValidationErrors | null => {
+      if (!control.value) {
+        return null;
+      }
+      const selectedDate = new Date(control.value);
+      const today = new Date();
+
+      today.setHours(0, 0, 0, 0);
+      selectedDate.setHours(0, 0, 0, 0);
+
+      return selectedDate >= today ? null : { dateInvalide: true };
+    };
   }
 }
