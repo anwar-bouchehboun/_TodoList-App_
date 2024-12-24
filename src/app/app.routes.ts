@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { TaskStatisticsComponent } from './tasks/task-statistics/task-statistics.component';
 
 export const routes: Routes = [
   {
@@ -12,4 +13,8 @@ export const routes: Routes = [
       import('./tasks/tasks.module').then((m) => m.TasksModule),
   },
   { path: '', redirectTo: '/tasks', pathMatch: 'full' },
+  {
+    path: 'tasks/statistics',
+    component: TaskStatisticsComponent,
+  },
 ];
