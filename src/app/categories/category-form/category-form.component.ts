@@ -38,12 +38,13 @@ export class CategoryFormComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router
   ) {}
-
+  //init form and check if we are in edit mode
   ngOnInit(): void {
     this.createForm();
     this.checkEditMode();
   }
 
+  //create form
   private createForm(): void {
     this.categoryForm = this.fb.group({
       name: [
@@ -57,6 +58,7 @@ export class CategoryFormComponent implements OnInit {
     });
   }
 
+  //check if we are in edit mode
   private checkEditMode(): void {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
@@ -70,6 +72,7 @@ export class CategoryFormComponent implements OnInit {
     }
   }
 
+  //submit button create or update category
   onSubmit(): void {
     if (this.categoryForm.valid) {
       try {
@@ -88,6 +91,7 @@ export class CategoryFormComponent implements OnInit {
     }
   }
 
+  //cancel button
   onCancel(): void {
     this.router.navigate(['/categories']);
   }
