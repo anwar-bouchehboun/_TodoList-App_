@@ -84,3 +84,7 @@ The application is built using **Angular 17** with a modular and reactive archit
    ```
    https://anouarab95.atlassian.net/jira/software/projects/TA/boards/19
    ```
+5. **Figma**: 
+  ```
+   https://anouarab95.atlassian.net/jira/software/projects/TA/boards/19
+   ```
