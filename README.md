@@ -80,11 +80,11 @@ The application is built using **Angular 17** with a modular and reactive archit
    ```bash
    ng serve
    ```
-4.**Jira**: 
+**Jira**: 
    ```
    https://anouarab95.atlassian.net/jira/software/projects/TA/boards/19
-   ```
-5. **Figma**: 
+  ```
+**Figma**: 
   ```
    https://anouarab95.atlassian.net/jira/software/projects/TA/boards/19
    ```
