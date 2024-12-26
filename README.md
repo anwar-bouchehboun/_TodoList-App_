@@ -86,5 +86,6 @@ The application is built using **Angular 17** with a modular and reactive archit
   ```
 **Figma**: 
   ```
-   https://anouarab95.atlassian.net/jira/software/projects/TA/boards/19
-   ```
+https://www.figma.com/design/Sy2KzAXDmYFnNYbFU2j2C4/TODO-List?node-id=0-1&p=f&t=n3QPZ48DtXBvKFOd-0   
+
+```
