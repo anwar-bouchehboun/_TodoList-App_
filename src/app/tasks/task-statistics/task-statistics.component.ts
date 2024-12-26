@@ -145,7 +145,7 @@ export class TaskStatisticsComponent implements OnInit {
   ngOnInit() {
     this.calculateStatistics();
   }
-
+  //calculate statistics
   private calculateStatistics() {
     this.taskService.getAllTasks().subscribe((tasks) => {
       this.totalTasks = tasks.length;
