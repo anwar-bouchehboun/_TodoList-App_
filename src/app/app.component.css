@@ -83,7 +83,6 @@ mat-icon {
   }
 }
 
-/* Styles pour très petits écrans */
 @media screen and (max-width: 320px) {
   .app-title {
     font-size: 16px;
@@ -94,17 +93,14 @@ mat-icon {
   }
 }
 
-/* Animations */
 .mat-drawer {
   transition: transform 0.3s ease-in-out;
 }
 
-/* Active route styling */
 .mat-list-item.active {
   background-color: rgba(0, 0, 0, 0.04);
 }
 
-/* Hover effects */
 .mat-list-item:hover {
   background-color: rgba(0, 0, 0, 0.04);
 }
