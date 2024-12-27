@@ -1,4 +1,3 @@
-
 <button mat-icon-button color="primary" [routerLink]="['/tasks/newTask']">
   <mat-icon>add</mat-icon>
 </button>
@@ -15,11 +14,10 @@
         <mat-card-content class="task-card-not-started">
           <div class="task-header">
             <div class="task-title">
-              <h3>{{ task.title }} </h3>
-              <h3 class="task-description"> {{ task.description }}</h3>
-
+              <h3>{{ task.title }}</h3>
+              <h3 class="task-description">{{ task.description }}</h3>
             </div>
-               <div class="task-actions">
+            <div class="task-actions">
               <button
                 mat-icon-button
                 color="primary"
@@ -36,7 +34,9 @@
               </button>
             </div>
           </div>
-          <p>Date: {{ task.dueDate | date : "dd/MM/yyyy" }}</p>
+          <div [style.color]="getDateColor(task.dueDate.toString())">
+            {{ task.dueDate | date : "dd/MM/yyyy" }}
+          </div>
         </mat-card-content>
       </mat-card>
     </div>
@@ -54,11 +54,10 @@
         <mat-card-content class="task-card-in-progress">
           <div class="task-header">
             <div class="task-title">
-              <h3>{{ task.title }} </h3>
-              <h3 class="task-description"> {{ task.description }}</h3>
-
+              <h3>{{ task.title }}</h3>
+              <h3 class="task-description">{{ task.description }}</h3>
             </div>
-             <div class="task-actions">
+            <div class="task-actions">
               <button
                 mat-icon-button
                 color="primary"
@@ -75,7 +74,9 @@
               </button>
             </div>
           </div>
-          <p>Date: {{ task.dueDate | date : "dd/MM/yyyy" }}</p>
+          <div [style.color]="getDateColor(task.dueDate.toString())">
+            {{ task.dueDate | date : "dd/MM/yyyy" }}
+          </div>
         </mat-card-content>
       </mat-card>
     </div>
@@ -93,12 +94,11 @@
         <mat-card-content class="task-card-completed">
           <div class="task-header">
             <div class="task-title">
-              <h3>{{ task.title }} </h3>
-              <h3 class="task-description"> {{ task.description }}</h3>
-
+              <h3>{{ task.title }}</h3>
+              <h3 class="task-description">{{ task.description }}</h3>
             </div>
             <div class="task-actions">
-             <button
+              <button
                 mat-icon-button
                 disabled="true"
                 color="primary"
@@ -116,7 +116,9 @@
               </button>
             </div>
           </div>
-          <p>Date: {{ task.dueDate | date : "dd/MM/yyyy" }}</p>
+          <div >
+            {{ task.dueDate | date : "dd/MM/yyyy" }}
+          </div>
         </mat-card-content>
       </mat-card>
     </div>

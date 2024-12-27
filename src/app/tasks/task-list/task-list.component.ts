@@ -22,7 +22,6 @@ import { TaskSearchComponent } from '../task-search/task-search.component';
     MatButtonModule,
     MatIconModule,
     TaskFilterPipe,
-    TaskSearchComponent,
   ],
   templateUrl: './task-list.component.html',
   styleUrls: ['./task-list.component.css'],
@@ -72,5 +71,16 @@ export class TaskListComponent implements OnInit {
         },
       });
     }
+  }
+
+  isDatePassed(dueDate: string | undefined): boolean {
+    if (!dueDate) return false;
+    const today = new Date();
+    const taskDate = new Date(dueDate);
+    return taskDate < today;
+  }
+
+  getDateColor(dueDate: string | undefined): string {
+    return this.isDatePassed(dueDate) ? 'red' : 'inherit';
   }
 }
