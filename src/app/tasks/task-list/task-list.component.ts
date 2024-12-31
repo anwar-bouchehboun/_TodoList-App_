@@ -10,6 +10,8 @@ import { Task } from '../task.model';
 import { TaskFilterPipe } from '../task-filter.pipe';
 import { BehaviorSubject } from 'rxjs';
 import { TaskSearchComponent } from '../task-search/task-search.component';
+import { CategoryService } from '../../categories/category.service';
+import { Category } from '../../categories/category.model';
 
 @Component({
   selector: 'app-task-list',
@@ -28,11 +30,22 @@ import { TaskSearchComponent } from '../task-search/task-search.component';
 })
 export class TaskListComponent implements OnInit {
   tasks$ = new BehaviorSubject<Task[]>([]);
+  categories$ = new BehaviorSubject<Category[]>([]);
 
-  constructor(private taskService: TaskService) {}
+  constructor(
+    private taskService: TaskService,
+    private categoryService: CategoryService
+  ) {}
 
   ngOnInit() {
     this.loadTasks();
+    this.loadCategories();
+  }
+
+  private loadCategories() {
+    this.categoryService.getCategories().subscribe((categories) => {
+      this.categories$.next(categories);
+    });
   }
 
   loadTasks() {
@@ -82,5 +95,13 @@ export class TaskListComponent implements OnInit {
 
   getDateColor(dueDate: string | undefined): string {
     return this.isDatePassed(dueDate) ? 'red' : 'inherit';
+  }
+
+  getCategoryName(categoryId: number | undefined): string {
+    if (!categoryId) return 'Sans catégorie';
+    const category = this.categories$.value.find(
+      (cat) => cat.id === categoryId
+    );
+    return category ? category.name : 'Sans catégorie';
   }
 }

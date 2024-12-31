@@ -7,8 +7,10 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { Output, EventEmitter } from '@angular/core';
 import { Task } from '../task.model';
 import { TaskService } from '../task.service';
-import { Observable, of } from 'rxjs';
+import { Observable, of, BehaviorSubject } from 'rxjs';
 import { MatCardModule } from '@angular/material/card';
+import { CategoryService } from '../../categories/category.service';
+import { Category } from '../../categories/category.model';
 
 @Component({
   selector: 'app-task-search',
@@ -25,17 +27,19 @@ import { MatCardModule } from '@angular/material/card';
 })
 export class TaskSearchComponent {
   tasks$: Observable<Task[]> = new Observable<Task[]>();
+  categories$ = new BehaviorSubject<Category[]>([]);
   @Output() search = new EventEmitter<string>();
   searchControl = new FormControl('');
 
   ngOnInit() {
-    this.taskService.getAllTasks().subscribe((tasks) => {
-      this.tasks$ = of(tasks);
-      console.log('Tableau des tâches:', this.tasks$);
-    });
+    this.loadTasks();
+    this.loadCategories();
   }
 
-  constructor(private taskService: TaskService) {
+  constructor(
+    private taskService: TaskService,
+    private categoryService: CategoryService
+  ) {
     this.searchControl.valueChanges
       .pipe(debounceTime(300), distinctUntilChanged())
       .subscribe((value) => {
@@ -49,6 +53,20 @@ export class TaskSearchComponent {
       this.tasks$ = of(filteredTasks);
       this.search.emit(searchTerm);
     });
+  }
+
+  private loadCategories() {
+    this.categoryService.getCategories().subscribe((categories) => {
+      this.categories$.next(categories);
+    });
+  }
+
+  getCategoryName(categoryId: number | undefined): string {
+    if (!categoryId) return 'Sans catégorie';
+    const category = this.categories$.value.find(
+      (cat) => cat.id === categoryId
+    );
+    return category ? category.name : 'Sans catégorie';
   }
 
   private getAllTasks(): Task[] {
@@ -67,5 +85,11 @@ export class TaskSearchComponent {
       default:
         return '';
     }
+  }
+
+  private loadTasks() {
+    this.taskService.getAllTasks().subscribe((tasks) => {
+      this.tasks$ = of(tasks);
+    });
   }
 }

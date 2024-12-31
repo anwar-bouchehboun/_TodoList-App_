@@ -66,3 +66,21 @@ mat-form-field {
   margin: auto;
   padding-left: 25%;
 }
+
+.category-badge {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 2px 8px;
+  border-radius: 12px;
+  background-color: #e0e0e0;
+  color: #666;
+  font-size: 0.8em;
+}
+
+/* Pour le mode sombre */
+@media (prefers-color-scheme: dark) {
+  .category-badge {
+    background-color: #4a4a4a;
+    color: #ddd;
+  }
+}

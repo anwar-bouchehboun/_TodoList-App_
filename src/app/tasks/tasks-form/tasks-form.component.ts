@@ -73,7 +73,6 @@ export class TasksFormComponent implements OnInit {
         if (this.isEditMode && this.taskId) {
           this.taskService.updateTask(this.taskId, formValue);
         } else {
-          console.log(formValue);
           this.taskService.createTask(formValue);
         }
         this.router.navigate(['/tasks/list']);

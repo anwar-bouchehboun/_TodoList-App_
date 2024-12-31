@@ -1,5 +1,5 @@
 <button mat-icon-button color="primary" [routerLink]="['/tasks/newTask']">
-  <mat-icon>add</mat-icon>
+  <mat-icon><span> add</span></mat-icon>
 </button>
 <div class="task-board">
   <div class="task-column">
@@ -16,6 +16,9 @@
             <div class="task-title">
               <h3>{{ task.title }}</h3>
               <h3 class="task-description">{{ task.description }}</h3>
+              <span class="task-category">{{
+                getCategoryName(task.categoryId)
+              }}</span>
             </div>
             <div class="task-actions">
               <button
@@ -56,6 +59,9 @@
             <div class="task-title">
               <h3>{{ task.title }}</h3>
               <h3 class="task-description">{{ task.description }}</h3>
+              <span class="task-category">{{
+                getCategoryName(task.categoryId)
+              }}</span>
             </div>
             <div class="task-actions">
               <button
@@ -96,6 +102,9 @@
             <div class="task-title">
               <h3>{{ task.title }}</h3>
               <h3 class="task-description">{{ task.description }}</h3>
+              <span class="task-category">{{
+                getCategoryName(task.categoryId)
+              }}</span>
             </div>
             <div class="task-actions">
               <button
@@ -116,7 +125,7 @@
               </button>
             </div>
           </div>
-          <div >
+          <div>
             {{ task.dueDate | date : "dd/MM/yyyy" }}
           </div>
         </mat-card-content>
